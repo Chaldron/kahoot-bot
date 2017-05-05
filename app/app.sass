@@ -1,0 +1,87 @@
+//Import Montserrat font (same as Kahoot's)
+@import url('https://fonts.googleapis.com/css?family=Montserrat')
+
+$BODY_COLOR: #66bf3a //Kahoot Green background
+$INPUT_BORDER_COLOR: #ccc
+$INPUT_TEXT_COLOR: #333
+$GO_BUTTON_COLOR: #333
+
+=hover($color)
+	&:hover
+		background-color: $color
+	transition: all 0.3s ease 0s
+
+=flex-center($flex-direction: row, $flex-wrap: nowrap)
+	display: flex
+	justify-content: space-around
+	align-items: center
+	flex-flow: $flex-direction $flex-wrap
+
+=font($size, $weight: 700, $color: white)
+	font-family: 'Montserrat', sans-serif
+	font-weight: $weight
+	font-size: $size
+	color: $color
+
+//Full body height and margin reset
+html, body
+	height: 100%
+	margin: 0
+
+body
+	+flex-center(column)
+	background-color: $BODY_COLOR 
+
+
+#container
+	+flex-center(column)
+
+	width: 100%
+	height: 80%
+
+	#pin-input-container
+		width: 50%
+		+flex-center(row)
+
+		#pin-input
+			border: .125rem solid $INPUT_BORDER_COLOR
+			border-radius: 0
+			width: 100%
+			height: 50px
+			line-height: 50px
+			text-align: center
+			+font(30px, $color:$INPUT_TEXT_COLOR)
+		
+	#settings-container
+		width: 50%
+
+		.setting
+			+flex-center(row)
+			justify-content: space-between
+			+font(20px)
+			width: 100%
+
+			input
+				height: 20px
+				line-height: 20px
+				text-align: center
+				border: .125rem solid $INPUT_BORDER_COLOR
+				+font(15px, $color:$INPUT_TEXT_COLOR)
+			
+		
+	#activate-button-container
+		width: 50%
+
+		#activate-button
+			+flex-center
+			background-color: $GO_BUTTON_COLOR
+			+font(20px)
+			
+			width: 100%
+			height: 50px
+		
+			+hover(darken($GO_BUTTON_COLOR, 5%))
+		
+
+
+

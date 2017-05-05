@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Kahoot Bot</title>
+    <link rel="stylesheet" href="app.css">
+  </head>
+ 
+
+
+  <body>
+  
+    <div id="container">
+  
+      <!-- PIN Input -->
+      <div id="pin-input-container">
+        <input id="pin-input" placeholder="Game PIN" type="text">
+      </div>
+  
+      <!-- Settings -->
+      <div id="settings-container">
+        <div class="setting" id="player-count-setting">
+          <p>Player count</p>
+          <input id="player-count-input" type="number" value="5">
+        </div>
+      </div>
+  
+      <!-- Activate Button -->
+      <div id="activate-button-container">
+        <div id="activate-button">
+          <p>Go</p>
+        </div>
+      </div>
+  
+    </div>
+
+  </body>
+
+  <script>
+      window.$ = window.jQuery = require('jQuery')
+      require('./app.js')
+  </script>
+  
+</html>

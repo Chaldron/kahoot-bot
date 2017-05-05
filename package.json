@@ -1,0 +1,23 @@
+{
+  "name": "kahoot-bot",
+  "version": "1.0.0",
+  "description": "A minimal Kahoot bot with a GUI",
+  "main": "main.js",
+  "scripts":
+  {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/Chaldron/kahoot-bot",
+  "author": "Chaldron",
+  "license": "GPLv3",
+  "dependencies":
+  {
+    "kahoot.js": "^1.0.0",
+    "nodejs-randomnames": "^1.0.1",
+    "jquery": "^3.2.1"
+  },
+  "devDependencies":
+  {
+    "electron": "~1.6.2"
+  }
+}
