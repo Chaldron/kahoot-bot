@@ -1,3 +1,5 @@
+const DEBUG_MODE = true
+
 //Electron Setup
 const electron = require('electron')
 const app = electron.app
@@ -10,10 +12,10 @@ let mainWindow
 
 function createWindow ()
 {
-  //Window should not be resizable
-  mainWindow = new BrowserWindow({width: 800, height: 600, minWidth: 800, minHeight:600, resizable: false})
-  //Disable the menu bar for aesthetic reasons
-  mainWindow.setMenu(null)
+  //Window should not be resizable if we're not in debug mode
+  mainWindow = new BrowserWindow({width: 800, height: 600, minWidth: 800, minHeight:600, resizable: DEBUG_MODE})
+  //Disable the menu bar for aesthetic reasons if we're not debugging
+  if(!DEBUG_MODE) mainWindow.setMenu(null)
   //Load the app.html file
   mainWindow.loadURL(url.format(
   {

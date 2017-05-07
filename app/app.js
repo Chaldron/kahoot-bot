@@ -1,11 +1,26 @@
 //Max number of Kahoot players
-const MAX_PLAYERS = 10
+const MAX_PLAYERS = 50
+
+//Default amount of players
+const DEFAULT_PLAYER_COUNT = 5
 
 //Get the logger function
 const log = require('./log.js')
 
+//Store UI attributes here
+//The activate handler shouldn't do anything with the UI.
+const UI =
+{
+	playerCount: DEFAULT_PLAYER_COUNT,
+	randomizePlayerNamesChecked: true,
+	customPlayerNameRoot: null
+}
+
 $( () =>
 {
+
+	//Handles any strictly UI-related functionality
+	UISetup()
 
 	//Assign click handler for "go" button
 	//which bascially starts the whole program
@@ -23,12 +38,21 @@ $( () =>
 		}
 
 		//Check number of players: should be a positive integer less than MAX_PLAYERS
-		let nPlayers = $('#player-count-input').val()
+		let nPlayers = UI.playerCount
 		if(!isPositiveInteger(nPlayers) || nPlayers > MAX_PLAYERS)
 		{
 			log(log.ERROR, "Player count is invalid! Canelling...")
 			return
 		}
+
+		//Are we randomizing names?
+		const usingRandomNames = UI.randomizePlayerNamesChecked
+		if(usingRandomNames) log(log.INFO, "Using random player names")
+		else log(log.INFO,"Using custom name root")
+
+		//Get the user's custom name root
+		const customNameRoot = UI.customPlayerNameRoot
+		if(!usingRandomNames) log(log.INFO, "Custom name root set to " + customNameRoot)
 
 		//After handling error-checking, we can begin the botting process
 
@@ -47,12 +71,9 @@ $( () =>
 		{
 			let worker = cluster.fork()
 			log(log.INFO, "Created new player process.")
-			worker.send({gamePin: gamePin})
-			log(log.INFO, "Sent Player " + worker.id + " game pin.")
+			worker.send({gamePin: gamePin, randomName: usingRandomNames, nameRoot: customNameRoot})
+			log(log.INFO, "Sent Player " + worker.id + " game data.")
 		}
-
-
-
 	})
 
 	//At this point the application is ready to start
@@ -63,6 +84,33 @@ $( () =>
 })
 
 
+function UISetup()
+{
+	$('#player-count-input').val(UI.playerCount)
+
+	//Hide the custom name entry by default
+	$('#player-selected-name-setting').hide()
+
+	//Store the number of players the user picks
+	$('#player-count-input').on("input propertychange", () => 
+	{
+		UI.playerCount = $('#player-count-input').val()
+	})
+
+	//Toggle the custom name entry when the checkbox is clicked.
+	$('#player-random-name-checkbox').click( () =>
+	{
+		$('#player-selected-name-setting').toggle()
+		UI.randomizePlayerNamesChecked = $('#player-random-name-checkbox')[0].checked
+	})
+	//Store the user's custom name
+	$('#player-selected-name-root').on("input propertychange", () => 
+	{
+		UI.customPlayerNameRoot = $('#player-selected-name-root').val()
+	})
+
+
+}
 
 
 /**

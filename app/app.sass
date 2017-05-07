@@ -32,6 +32,10 @@ body
 	+flex-center(column)
 	background-color: $BODY_COLOR 
 
+//Remove input yellow border when focused
+input
+	&:focus
+		outline: none
 
 #container
 	+flex-center(column)
@@ -67,6 +71,14 @@ body
 				text-align: center
 				border: .125rem solid $INPUT_BORDER_COLOR
 				+font(15px, $color:$INPUT_TEXT_COLOR)
+
+		#player-random-name-setting
+			#player-random-name-checkbox
+				width: 25px
+		
+		#player-selected-name-setting
+			#player-selected-name-root
+
 			
 		
 	#activate-button-container
