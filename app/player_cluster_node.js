@@ -42,13 +42,14 @@ process.on('message', function(data)
 
 	const gamePin = data.gamePin
 
-	//Answers are represented 0-3, so we choose a random one to pick from that list
+	//Answers are represented 0-3, so we choose a random number to represent the next answer
 	let nextAnswer = Math.round(Math.random() * 3)
 
 	//Join the game
 	log(log.INFO, 'Joining game ' + gamePin, LOG_TAG)
 	kClient.join(gamePin, name)
 
+	//Fired when the client successfully joined the game
 	kClient.on('joined', () =>
 	{
 		log(log.INFO, 'Joined game ' + gamePin + '!',LOG_TAG)
@@ -59,6 +60,7 @@ process.on('message', function(data)
 	{
 		log(log.INFO, 'Answering question with answer ' + nextAnswer, LOG_TAG)
 		question.answer(nextAnswer)
+		//Update the next answer to a new random number
 		nextAnswer = Math.round(Math.random() * 3)
 	})
 

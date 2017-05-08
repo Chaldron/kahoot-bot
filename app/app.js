@@ -1,5 +1,5 @@
 //Max number of Kahoot players
-const MAX_PLAYERS = 50
+const MAX_PLAYERS = 2000
 
 //Default amount of players
 const DEFAULT_PLAYER_COUNT = 5
@@ -28,6 +28,7 @@ $( () =>
 	{
 		log(log.INFO, "Checking parameters...")
 
+		//TODO: Change this to be handled by the UI object
 		//Check game pin: it should be a positive integer
 		let gamePin = $('#pin-input').val()
 		

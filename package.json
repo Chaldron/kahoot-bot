@@ -2,10 +2,10 @@
   "name": "kahoot-bot",
   "version": "1.0.0",
   "description": "A minimal Kahoot bot with a GUI",
-  "main": "main.js",
+  "main": "app/main.js",
   "scripts":
   {
-    "start": "electron ."
+    "start": "electron %npm_package_main%"
   },
   "repository": "https://github.com/Chaldron/kahoot-bot",
   "author": "Chaldron",

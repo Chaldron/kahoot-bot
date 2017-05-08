@@ -1,4 +1,4 @@
-const DEBUG_MODE = true
+const DEBUG_MODE = false
 
 //Electron Setup
 const electron = require('electron')
@@ -19,7 +19,7 @@ function createWindow ()
   //Load the app.html file
   mainWindow.loadURL(url.format(
   {
-    pathname: path.join(__dirname, 'app/app.html'),
+    pathname: path.join(__dirname, 'app.html'),
     protocol: 'file:',
     slashes: true
   }))
