@@ -11,3 +11,5 @@ To run the application, you will need to have [Node.js](https://nodejs.org/en/) 
 `npm i`
 
 `npm start`
+
+Alternatively, binary builds are available on the releases page. Currently, these only support Windows 64-bit.
