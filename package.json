@@ -6,7 +6,7 @@
   "scripts":
   {
     "start": "electron %npm_package_main%",
-    "build-win": "electron-packager . --overwrite --platform=win32 --arch=x64 --asar --icon=app/app.ico --prune=true --out=dist"
+    "build-win": "electron-packager . --overwrite --platform=win32 --arch=x64 --icon=app/app.ico --prune=true --out=dist"
   },
   "repository": "https://github.com/Chaldron/kahoot-bot",
   "author": "Chaldron",
