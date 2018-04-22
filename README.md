@@ -1,4 +1,4 @@
-# Kahoot Bot
+# Kahoot Bot (DEPRECATED)
 
 This is a simple, GUI-based Kahoot bot written in Node.js using Electron. It is compatible with Windows, macOS, and Linux.
 
