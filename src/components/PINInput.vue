@@ -1,23 +1,31 @@
 <!-- Kahoot Game PIN Input Component -->
 <template>
     <div class="game-pin-input">
-        <input placeholder="Game PIN" type="text" :value="gamePIN" @input="updateGamePIN">
+        <input placeholder="Game PIN" type="text" v-model="pin">
     </div>
 </template>
 
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-@Component
-export default class PINInput extends Vue {
-    
+<script>
+export default {
+  name: 'PINInput',
+  props: {
+  },
+  computed: {
+     pin: {
+          get() {
+              return this.$store.state.gamePIN
+          },
+          set (pin) {
+              this.$store.commit('updateGamePIN', pin)
+          }
+      }
+  }
 }
 </script>
 
 <style scoped lang="sass">
 @import url('https://fonts.googleapis.com/css?family=Montserrat')
-
 
 .game-pin-input
     width: 35%
@@ -37,4 +45,5 @@ export default class PINInput extends Vue {
         &:focus
             outline: none
 
+    margin-bottom: 60px
 </style>

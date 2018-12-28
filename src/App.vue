@@ -1,28 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <PINInput></PINInput>
+    <StartButton></StartButton>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PINInput from './components/PINInput.vue'
+import StartButton from './components/StartButton.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    PINInput,
+    StartButton
   }
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+*
+  margin: 0
+  padding: 0
+
+html, body
+  height: 100%
+  margin: 0
+  padding: 0
+body
+  background-color: #66bf3a
+
+#app
+  height: 100%
+  display: flex
+  flex-flow: column nowrap
+  justify-content: center
+  align-items: center
 </style>
