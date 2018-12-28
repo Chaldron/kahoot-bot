@@ -38,5 +38,4 @@ export default {
         cursor: pointer
 
     transition: 0.3s ease all
-
 </style>
